@@ -1,18 +1,20 @@
 from flask import Flask, render_template, request, redirect, \
 	url_for, session, flash
-
-from flask_sqlalchemy import SQLAlchemy
 from functools import wraps
-#import sqlite3
+from flask_sqlalchemy import SQLAlchemy
+from flask_bcrypt import Bcrypt
+
+
 
 
 app = Flask(__name__)
+bcrypt = Bcrypt(app)
 
 
 # config
 import os
 app.config.from_object(os.environ['APP_SETTINGS'])
-#print(os.environ['APP_SETTINGS'])
+
 
 
 # create the sqlalchemy object
