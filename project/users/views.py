@@ -46,7 +46,7 @@ def login():
         if form.validate_on_submit():
             user = User.query.filter_by(name=request.form['username']).first()
             if user is not None and bcrypt.check_password_hash(
-                user.password, request.form['password'], u'\u2603'
+                user.password, request.form['password']
             ):
                 session['logged_in'] = True
                 flash('You were logged in.')
